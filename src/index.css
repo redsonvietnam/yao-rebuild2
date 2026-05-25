@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/* ─── CSS Global Variables ─────────────────────────────── */
+:root {
+  --grid-size: 40px;
+  --page-width: 210mm;
+  --page-height: 297mm;
+  --margin-top: 20mm;
+  --margin-right: 20mm;
+  --margin-bottom: 20mm;
+  --margin-left: 20mm;
+  --writing-mode: horizontal-tb;
+  --font-main: 'Noto Serif CJK', serif;
+}
+
+/* ─── Base ─────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #030712;
+  color: #f9fafb;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Page Layout ───────────────────────────────────────── */
+.ProseMirror {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2.5rem;
+  outline: none;
+  min-height: 100%;
+}
+
+/* If any page inside is writing-vertical, layout the pages horizontally from right to left */
+.ProseMirror:has(.writing-vertical) {
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: auto;
+  width: max-content;
+  min-width: 100%;
+}
+
+.yao-page {
+  width: var(--page-width);
+  height: var(--page-height);
+  padding: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
+  background: white;
+  color: black;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  outline: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  transition: box-shadow 0.3s ease;
+}
+
+.yao-page:focus-within {
+  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25), 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* Vertical writing mode specifically for the page */
+.yao-page.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Ensure blocks behave in both modes */
+.yao-page p {
+  margin: 0;
+  line-height: var(--grid-size);
+  font-size: 20px;
+  font-family: var(--font-main), 'Times New Roman', serif;
+}
+
+.yao-page.writing-vertical p {
+  line-height: var(--grid-size);
+  letter-spacing: 0.1em;
+}
+
+/* ─── Grid Overlay (Hán-Nôm Style) ───────────────────────── */
+.show-grid .yao-page {
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: var(--margin-left) var(--margin-top);
+}
+
+/* Red border indicating margins (ancient book style) */
+.show-grid .yao-page::before {
+  content: "";
+  position: absolute;
+  top: var(--margin-top);
+  left: var(--margin-left);
+  right: var(--margin-right);
+  bottom: var(--margin-bottom);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Placeholder for Tiptap */
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

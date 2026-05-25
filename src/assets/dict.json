@@ -1,0 +1,1083 @@
+{
+  "yătx": [
+    {
+      "hanzi": "一",
+      "pinyin": "yătx",
+      "weight": 100
+    }
+  ],
+  "nhoz": [
+    {
+      "hanzi": "二",
+      "pinyin": "nhoz",
+      "weight": 100
+    }
+  ],
+  "slaml": [
+    {
+      "hanzi": "三",
+      "pinyin": "slaml",
+      "weight": 100
+    }
+  ],
+  "blex": [
+    {
+      "hanzi": "四",
+      "pinyin": "blex",
+      "weight": 100
+    }
+  ],
+  "nguz": [
+    {
+      "hanzi": "五",
+      "pinyin": "nguz",
+      "weight": 100
+    }
+  ],
+  "lokx": [
+    {
+      "hanzi": "六",
+      "pinyin": "lokx",
+      "weight": 100
+    },
+    {
+      "hanzi": "綠",
+      "pinyin": "lokx",
+      "weight": 80
+    }
+  ],
+  "thăts": [
+    {
+      "hanzi": "七",
+      "pinyin": "thăts",
+      "weight": 100
+    }
+  ],
+  "pêtx": [
+    {
+      "hanzi": "八",
+      "pinyin": "pêtx",
+      "weight": 100
+    }
+  ],
+  "kjuz": [
+    {
+      "hanzi": "九",
+      "pinyin": "kjuz",
+      "weight": 100
+    }
+  ],
+  "sĕpx": [
+    {
+      "hanzi": "十",
+      "pinyin": "sĕpx",
+      "weight": 100
+    }
+  ],
+  "pêr": [
+    {
+      "hanzi": "百",
+      "pinyin": "pêr",
+      "weight": 90
+    }
+  ],
+  "thyenl": [
+    {
+      "hanzi": "千",
+      "pinyin": "thyenl",
+      "weight": 90
+    }
+  ],
+  "vants": [
+    {
+      "hanzi": "万",
+      "pinyin": "vants",
+      "weight": 90
+    }
+  ],
+  "lingz": [
+    {
+      "hanzi": "零",
+      "pinyin": "lingz",
+      "weight": 80
+    }
+  ],
+  "kjăpx": [
+    {
+      "hanzi": "甲",
+      "pinyin": "kjăpx",
+      "weight": 80
+    }
+  ],
+  "ĭts": [
+    {
+      "hanzi": "乙",
+      "pinyin": "ĭts",
+      "weight": 80
+    }
+  ],
+  "plugs": [
+    {
+      "hanzi": "丙",
+      "pinyin": "plugs",
+      "weight": 80
+    }
+  ],
+  "tingr": [
+    {
+      "hanzi": "丁",
+      "pinyin": "tingr",
+      "weight": 80
+    }
+  ],
+  "muz": [
+    {
+      "hanzi": "無",
+      "pinyin": "muz",
+      "weight": 90
+    },
+    {
+      "hanzi": "戊",
+      "pinyin": "muz",
+      "weight": 80
+    }
+  ],
+  "kjiv": [
+    {
+      "hanzi": "己",
+      "pinyin": "kjiv",
+      "weight": 80
+    }
+  ],
+  "kingr": [
+    {
+      "hanzi": "庚",
+      "pinyin": "kingr",
+      "weight": 80
+    }
+  ],
+  "sinr": [
+    {
+      "hanzi": "辛",
+      "pinyin": "sinr",
+      "weight": 80
+    },
+    {
+      "hanzi": "新",
+      "pinyin": "sinr",
+      "weight": 75
+    }
+  ],
+  "nyimz": [
+    {
+      "hanzi": "壬",
+      "pinyin": "nyimz",
+      "weight": 80
+    }
+  ],
+  "kwiv": [
+    {
+      "hanzi": "癸",
+      "pinyin": "kwiv",
+      "weight": 80
+    }
+  ],
+  "tsiv": [
+    {
+      "hanzi": "子",
+      "pinyin": "tsiv",
+      "weight": 90
+    },
+    {
+      "hanzi": "子",
+      "pinyin": "tsiv",
+      "weight": 80
+    },
+    {
+      "hanzi": "巳",
+      "pinyin": "tsiv",
+      "weight": 80
+    }
+  ],
+  "nhhov": [
+    {
+      "hanzi": "丑",
+      "pinyin": "nhhov",
+      "weight": 80
+    }
+  ],
+  "yinz": [
+    {
+      "hanzi": "寅",
+      "pinyin": "yinz",
+      "weight": 80
+    }
+  ],
+  "maws": [
+    {
+      "hanzi": "卯",
+      "pinyin": "maws",
+      "weight": 80
+    }
+  ],
+  "sĭnz": [
+    {
+      "hanzi": "辰",
+      "pinyin": "sĭnz",
+      "weight": 80
+    },
+    {
+      "hanzi": "神",
+      "pinyin": "sĭnz",
+      "weight": 80
+    }
+  ],
+  "ngus": [
+    {
+      "hanzi": "午",
+      "pinyin": "ngus",
+      "weight": 80
+    }
+  ],
+  "miv": [
+    {
+      "hanzi": "未",
+      "pinyin": "miv",
+      "weight": 80
+    }
+  ],
+  "sĭnr": [
+    {
+      "hanzi": "申",
+      "pinyin": "sĭnr",
+      "weight": 80
+    }
+  ],
+  "yovs": [
+    {
+      "hanzi": "有",
+      "pinyin": "yovs",
+      "weight": 90
+    },
+    {
+      "hanzi": "酉",
+      "pinyin": "yovs",
+      "weight": 80
+    },
+    {
+      "hanzi": "友",
+      "pinyin": "yovs",
+      "weight": 75
+    },
+    {
+      "hanzi": "右",
+      "pinyin": "yovs",
+      "weight": 75
+    }
+  ],
+  "suts": [
+    {
+      "hanzi": "戌",
+      "pinyin": "suts",
+      "weight": 80
+    }
+  ],
+  "gaiv": [
+    {
+      "hanzi": "亥",
+      "pinyin": "gaiv",
+      "weight": 80
+    }
+  ],
+  "thênz": [
+    {
+      "hanzi": "天",
+      "pinyin": "thênz",
+      "weight": 100
+    }
+  ],
+  "dir": [
+    {
+      "hanzi": "地",
+      "pinyin": "dir",
+      "weight": 100
+    }
+  ],
+  "nhătx": [
+    {
+      "hanzi": "日",
+      "pinyin": "nhătx",
+      "weight": 100
+    },
+    {
+      "hanzi": "日",
+      "pinyin": "nhătx",
+      "weight": 90
+    }
+  ],
+  "nyetr": [
+    {
+      "hanzi": "月",
+      "pinyin": "nyetr",
+      "weight": 100
+    },
+    {
+      "hanzi": "月",
+      "pinyin": "nyetr",
+      "weight": 90
+    }
+  ],
+  "singr": [
+    {
+      "hanzi": "星",
+      "pinyin": "singr",
+      "weight": 90
+    }
+  ],
+  "slivs": [
+    {
+      "hanzi": "水",
+      "pinyin": "slivs",
+      "weight": 90
+    },
+    {
+      "hanzi": "水",
+      "pinyin": "slivs",
+      "weight": 90
+    },
+    {
+      "hanzi": "水",
+      "pinyin": "slivs",
+      "weight": 80
+    }
+  ],
+  "fovr": [
+    {
+      "hanzi": "火",
+      "pinyin": "fovr",
+      "weight": 90
+    },
+    {
+      "hanzi": "火",
+      "pinyin": "fovr",
+      "weight": 90
+    }
+  ],
+  "slanr": [
+    {
+      "hanzi": "山",
+      "pinyin": "slanr",
+      "weight": 90
+    },
+    {
+      "hanzi": "山",
+      "pinyin": "slanr",
+      "weight": 90
+    }
+  ],
+  "fungr": [
+    {
+      "hanzi": "風",
+      "pinyin": "fungr",
+      "weight": 85
+    }
+  ],
+  "yus": [
+    {
+      "hanzi": "雨",
+      "pinyin": "yus",
+      "weight": 85
+    }
+  ],
+  "wunz": [
+    {
+      "hanzi": "雲",
+      "pinyin": "wunz",
+      "weight": 80
+    }
+  ],
+  "loviz": [
+    {
+      "hanzi": "雷",
+      "pinyin": "loviz",
+      "weight": 80
+    }
+  ],
+  "thov": [
+    {
+      "hanzi": "土",
+      "pinyin": "thov",
+      "weight": 90
+    },
+    {
+      "hanzi": "土",
+      "pinyin": "thov",
+      "weight": 80
+    }
+  ],
+  "nhăn": [
+    {
+      "hanzi": "人",
+      "pinyin": "nhăn",
+      "weight": 100
+    }
+  ],
+  "fuvs": [
+    {
+      "hanzi": "父",
+      "pinyin": "fuvs",
+      "weight": 90
+    }
+  ],
+  "muov": [
+    {
+      "hanzi": "母",
+      "pinyin": "muov",
+      "weight": 90
+    }
+  ],
+  "nyus": [
+    {
+      "hanzi": "女",
+      "pinyin": "nyus",
+      "weight": 90
+    }
+  ],
+  "namz": [
+    {
+      "hanzi": "男",
+      "pinyin": "namz",
+      "weight": 90
+    },
+    {
+      "hanzi": "南",
+      "pinyin": "namz",
+      "weight": 85
+    },
+    {
+      "hanzi": "藍",
+      "pinyin": "namz",
+      "weight": 80
+    }
+  ],
+  "khungr": [
+    {
+      "hanzi": "兄",
+      "pinyin": "khungr",
+      "weight": 80
+    }
+  ],
+  "thivs": [
+    {
+      "hanzi": "弟",
+      "pinyin": "thivs",
+      "weight": 80
+    }
+  ],
+  "tsias": [
+    {
+      "hanzi": "姐",
+      "pinyin": "tsias",
+      "weight": 80
+    }
+  ],
+  "mivs": [
+    {
+      "hanzi": "米",
+      "pinyin": "mivs",
+      "weight": 85
+    },
+    {
+      "hanzi": "妹",
+      "pinyin": "mivs",
+      "weight": 80
+    }
+  ],
+  "fur": [
+    {
+      "hanzi": "夫",
+      "pinyin": "fur",
+      "weight": 85
+    }
+  ],
+  "tshivr": [
+    {
+      "hanzi": "妻",
+      "pinyin": "tshivr",
+      "weight": 85
+    }
+  ],
+  "tsovs": [
+    {
+      "hanzi": "祖",
+      "pinyin": "tsovs",
+      "weight": 80
+    }
+  ],
+  "sunr": [
+    {
+      "hanzi": "孫",
+      "pinyin": "sunr",
+      "weight": 80
+    }
+  ],
+  "svr": [
+    {
+      "hanzi": "書",
+      "pinyin": "svr",
+      "weight": 80
+    },
+    {
+      "hanzi": "師",
+      "pinyin": "svr",
+      "weight": 75
+    }
+  ],
+  "plăks": [
+    {
+      "hanzi": "白",
+      "pinyin": "plăks",
+      "weight": 85
+    }
+  ],
+  "hur": [
+    {
+      "hanzi": "黑",
+      "pinyin": "hur",
+      "weight": 85
+    }
+  ],
+  "fungz": [
+    {
+      "hanzi": "紅",
+      "pinyin": "fungz",
+      "weight": 85
+    },
+    {
+      "hanzi": "黃",
+      "pinyin": "fungz",
+      "weight": 80
+    }
+  ],
+  "tshinz": [
+    {
+      "hanzi": "青",
+      "pinyin": "tshinz",
+      "weight": 75
+    }
+  ],
+  "tungr": [
+    {
+      "hanzi": "東",
+      "pinyin": "tungr",
+      "weight": 85
+    },
+    {
+      "hanzi": "中",
+      "pinyin": "tungr",
+      "weight": 80
+    }
+  ],
+  "sir": [
+    {
+      "hanzi": "西",
+      "pinyin": "sir",
+      "weight": 85
+    }
+  ],
+  "pukx": [
+    {
+      "hanzi": "北",
+      "pinyin": "pukx",
+      "weight": 85
+    }
+  ],
+  "slogts": [
+    {
+      "hanzi": "上",
+      "pinyin": "slogts",
+      "weight": 80
+    }
+  ],
+  "gar": [
+    {
+      "hanzi": "下",
+      "pinyin": "gar",
+      "weight": 80
+    }
+  ],
+  "tsor": [
+    {
+      "hanzi": "昨",
+      "pinyin": "tsor",
+      "weight": 80
+    },
+    {
+      "hanzi": "左",
+      "pinyin": "tsor",
+      "weight": 75
+    }
+  ],
+  "tsyenz": [
+    {
+      "hanzi": "前",
+      "pinyin": "tsyenz",
+      "weight": 75
+    }
+  ],
+  "govz": [
+    {
+      "hanzi": "後",
+      "pinyin": "govz",
+      "weight": 75
+    },
+    {
+      "hanzi": "猴",
+      "pinyin": "govz",
+      "weight": 75
+    }
+  ],
+  "nyenz": [
+    {
+      "hanzi": "年",
+      "pinyin": "nyenz",
+      "weight": 90
+    }
+  ],
+  "svz": [
+    {
+      "hanzi": "時",
+      "pinyin": "svz",
+      "weight": 85
+    }
+  ],
+  "kĭmr": [
+    {
+      "hanzi": "今",
+      "pinyin": "kĭmr",
+      "weight": 85
+    }
+  ],
+  "menz": [
+    {
+      "hanzi": "明",
+      "pinyin": "menz",
+      "weight": 80
+    }
+  ],
+  "kuvs": [
+    {
+      "hanzi": "古",
+      "pinyin": "kuvs",
+      "weight": 75
+    }
+  ],
+  "kjuvs": [
+    {
+      "hanzi": "舊",
+      "pinyin": "kjuvs",
+      "weight": 75
+    }
+  ],
+  "mavs": [
+    {
+      "hanzi": "馬",
+      "pinyin": "mavs",
+      "weight": 85
+    }
+  ],
+  "nyovz": [
+    {
+      "hanzi": "牛",
+      "pinyin": "nyovz",
+      "weight": 85
+    }
+  ],
+  "yungz": [
+    {
+      "hanzi": "羊",
+      "pinyin": "yungz",
+      "weight": 85
+    }
+  ],
+  "tslivr": [
+    {
+      "hanzi": "豬",
+      "pinyin": "tslivr",
+      "weight": 85
+    }
+  ],
+  "khyenz": [
+    {
+      "hanzi": "犬",
+      "pinyin": "khyenz",
+      "weight": 80
+    }
+  ],
+  "kjivr": [
+    {
+      "hanzi": "雞",
+      "pinyin": "kjivr",
+      "weight": 80
+    }
+  ],
+  "saz": [
+    {
+      "hanzi": "蛇",
+      "pinyin": "saz",
+      "weight": 80
+    }
+  ],
+  "sus": [
+    {
+      "hanzi": "鼠",
+      "pinyin": "sus",
+      "weight": 80
+    }
+  ],
+  "lungz": [
+    {
+      "hanzi": "龍",
+      "pinyin": "lungz",
+      "weight": 80
+    }
+  ],
+  "huvs": [
+    {
+      "hanzi": "虎",
+      "pinyin": "huvs",
+      "weight": 75
+    }
+  ],
+  "thuvs": [
+    {
+      "hanzi": "兔",
+      "pinyin": "thuvs",
+      "weight": 75
+    }
+  ],
+  "mukx": [
+    {
+      "hanzi": "木",
+      "pinyin": "mukx",
+      "weight": 90
+    },
+    {
+      "hanzi": "木",
+      "pinyin": "mukx",
+      "weight": 85
+    },
+    {
+      "hanzi": "目",
+      "pinyin": "mukx",
+      "weight": 85
+    }
+  ],
+  "tsukx": [
+    {
+      "hanzi": "竹",
+      "pinyin": "tsukx",
+      "weight": 80
+    },
+    {
+      "hanzi": "足",
+      "pinyin": "tsukx",
+      "weight": 80
+    }
+  ],
+  "favr": [
+    {
+      "hanzi": "花",
+      "pinyin": "favr",
+      "weight": 80
+    }
+  ],
+  "tshavs": [
+    {
+      "hanzi": "草",
+      "pinyin": "tshavs",
+      "weight": 80
+    }
+  ],
+  "buenz": [
+    {
+      "hanzi": "飯",
+      "pinyin": "buenz",
+      "weight": 80
+    }
+  ],
+  "daz": [
+    {
+      "hanzi": "茶",
+      "pinyin": "daz",
+      "weight": 80
+    }
+  ],
+  "tsyovs": [
+    {
+      "hanzi": "酒",
+      "pinyin": "tsyovs",
+      "weight": 80
+    }
+  ],
+  "nhovts": [
+    {
+      "hanzi": "肉",
+      "pinyin": "nhovts",
+      "weight": 80
+    }
+  ],
+  "kimr": [
+    {
+      "hanzi": "金",
+      "pinyin": "kimr",
+      "weight": 90
+    }
+  ],
+  "kovs": [
+    {
+      "hanzi": "口",
+      "pinyin": "kovs",
+      "weight": 85
+    }
+  ],
+  "slas": [
+    {
+      "hanzi": "手",
+      "pinyin": "slas",
+      "weight": 85
+    }
+  ],
+  "nyivs": [
+    {
+      "hanzi": "耳",
+      "pinyin": "nyivs",
+      "weight": 85
+    }
+  ],
+  "simr": [
+    {
+      "hanzi": "心",
+      "pinyin": "simr",
+      "weight": 85
+    }
+  ],
+  "yenz": [
+    {
+      "hanzi": "言",
+      "pinyin": "yenz",
+      "weight": 80
+    },
+    {
+      "hanzi": "仙",
+      "pinyin": "yenz",
+      "weight": 75
+    }
+  ],
+  "litr": [
+    {
+      "hanzi": "力",
+      "pinyin": "litr",
+      "weight": 80
+    }
+  ],
+  "dawz": [
+    {
+      "hanzi": "刀",
+      "pinyin": "dawz",
+      "weight": 80
+    },
+    {
+      "hanzi": "道",
+      "pinyin": "dawz",
+      "weight": 80
+    }
+  ],
+  "munz": [
+    {
+      "hanzi": "門",
+      "pinyin": "munz",
+      "weight": 80
+    },
+    {
+      "hanzi": "文",
+      "pinyin": "munz",
+      "weight": 80
+    }
+  ],
+  "tienz": [
+    {
+      "hanzi": "田",
+      "pinyin": "tienz",
+      "weight": 80
+    }
+  ],
+  "sĕts": [
+    {
+      "hanzi": "石",
+      "pinyin": "sĕts",
+      "weight": 80
+    }
+  ],
+  "taiv": [
+    {
+      "hanzi": "大",
+      "pinyin": "taiv",
+      "weight": 90
+    }
+  ],
+  "sliavs": [
+    {
+      "hanzi": "小",
+      "pinyin": "sliavs",
+      "weight": 90
+    }
+  ],
+  "dor": [
+    {
+      "hanzi": "多",
+      "pinyin": "dor",
+      "weight": 90
+    }
+  ],
+  "savs": [
+    {
+      "hanzi": "少",
+      "pinyin": "savs",
+      "weight": 90
+    }
+  ],
+  "havs": [
+    {
+      "hanzi": "好",
+      "pinyin": "havs",
+      "weight": 90
+    }
+  ],
+  "svs": [
+    {
+      "hanzi": "是",
+      "pinyin": "svs",
+      "weight": 90
+    }
+  ],
+  "buts": [
+    {
+      "hanzi": "不",
+      "pinyin": "buts",
+      "weight": 90
+    }
+  ],
+  "lais": [
+    {
+      "hanzi": "來",
+      "pinyin": "lais",
+      "weight": 85
+    }
+  ],
+  "khivs": [
+    {
+      "hanzi": "去",
+      "pinyin": "khivs",
+      "weight": 85
+    }
+  ],
+  "yĭpx": [
+    {
+      "hanzi": "入",
+      "pinyin": "yĭpx",
+      "weight": 85
+    }
+  ],
+  "tshutr": [
+    {
+      "hanzi": "出",
+      "pinyin": "tshutr",
+      "weight": 85
+    }
+  ],
+  "kjens": [
+    {
+      "hanzi": "見",
+      "pinyin": "kjens",
+      "weight": 85
+    }
+  ],
+  "slots": [
+    {
+      "hanzi": "說",
+      "pinyin": "slots",
+      "weight": 85
+    }
+  ],
+  "nungz": [
+    {
+      "hanzi": "能",
+      "pinyin": "nungz",
+      "weight": 80
+    }
+  ],
+  "tsvr": [
+    {
+      "hanzi": "知",
+      "pinyin": "tsvr",
+      "weight": 80
+    }
+  ],
+  "hokx": [
+    {
+      "hanzi": "學",
+      "pinyin": "hokx",
+      "weight": 80
+    }
+  ],
+  "wungz": [
+    {
+      "hanzi": "王",
+      "pinyin": "wungz",
+      "weight": 80
+    }
+  ],
+  "minz": [
+    {
+      "hanzi": "民",
+      "pinyin": "minz",
+      "weight": 80
+    }
+  ],
+  "kwokx": [
+    {
+      "hanzi": "國",
+      "pinyin": "kwokx",
+      "weight": 80
+    }
+  ],
+  "tsivs": [
+    {
+      "hanzi": "字",
+      "pinyin": "tsivs",
+      "weight": 80
+    }
+  ],
+  "fats": [
+    {
+      "hanzi": "法",
+      "pinyin": "fats",
+      "weight": 80
+    }
+  ],
+  "kwivs": [
+    {
+      "hanzi": "鬼",
+      "pinyin": "kwivs",
+      "weight": 75
+    }
+  ],
+  "futs": [
+    {
+      "hanzi": "佛",
+      "pinyin": "futs",
+      "weight": 75
+    }
+  ]
+}

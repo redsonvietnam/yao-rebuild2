@@ -1,0 +1,220 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# Từ điển phiên âm tiếng Dao (Hán-Dao / Yao)
+# Schema: yao (dao.schema.yaml → yao.schema.yaml)
+#
+# Cấu trúc mỗi dòng:
+#   [chữ Hán]  TAB  [phiên âm Dao]  TAB  [trọng số - tuỳ chọn]
+#
+# ┌─ NGUYÊN ÂM ─────────────────────────────────────────────────┐
+# │  Dài:  a  i  e  u  o  ê  ô                                 │
+# │  Ngắn: ă  ĭ  ĕ  ŏ                                          │
+# └─────────────────────────────────────────────────────────────┘
+# ┌─ 7 THANH ĐIỆU (hậu tố) ─────────────────────────────────────┐
+# │  1=không dấu   2=v   3=s   4=z   5=l   6=r   7=x           │
+# └─────────────────────────────────────────────────────────────┘
+# ┌─ PHỤ ÂM ────────────────────────────────────────────────────┐
+# │  Đơn: b c d f g h j k l m n p s w y                        │
+# │  Ghép: kh nh ng th sl bl kl pl khl gl bj pj kj khj gj      │
+# │  (r v x KHÔNG làm phụ âm, chỉ làm thanh điệu)             │
+# └─────────────────────────────────────────────────────────────┘
+
+---
+name: yao
+version: "0.1"
+sort: by_weight
+use_preset_vocabulary: false
+max_phrase_length: 7
+min_phrase_weight: 1
+...
+
+# ══════════════════════════════════════════════════════════════
+#  SỐ ĐẾM  (数字)
+# ══════════════════════════════════════════════════════════════
+
+一	yătx	100
+二	nhoz	100
+三	slaml	100
+四	blex	100
+五	nguz	100
+六	lokx	100
+七	thăts	100
+八	pêtx	100
+九	kjuz	100
+十	sĕpx	100
+百	pêr	90
+千	thyenl	90
+万	vants	90
+零	lingz	80
+
+
+
+甲	kjăpx	80
+乙	ĭts	80
+丙	plugs	80
+丁	tingr	80
+戊	muz	80
+己	kjiv	80
+庚	kingr	80
+辛	sinr	80
+壬	nyimz	80
+癸	kwiv	80
+
+子	tsiv	80
+丑	nhhov	80
+寅	yinz	80
+卯	maws	80
+辰	sĭnz	80
+巳	tsiv	80
+午	ngus	80
+未	miv	80
+申	sĭnr	80
+酉	yovs	80
+戌	suts	80
+亥	gaiv	80
+
+
+天	thênz	100
+地	dir	100
+日	nhătx	100
+月	nyetr	100
+星	singr	90
+水	slivs	90
+火	fovr	90
+山	slanr	90
+風	fungr	85
+雨	yus	85
+雲	wunz	80
+雷	loviz	80
+土	thov	80
+
+
+人	nhăn	100
+父	fuvs	90
+母	muov	90
+子	tsiv	90
+女	nyus	90
+男	namz	90
+兄	khungr	80
+弟	thivs	80
+姐	tsias	80
+妹	mivs	80
+夫	fur	85
+妻	tshivr	85
+祖	tsovs	80
+孫	sunr	80
+師	svr	75
+友	yovs	75
+
+
+白	plăks	85
+黑	hur	85
+紅	fungz	85
+藍	namz	80
+綠	lokx	80
+黃	fungz	80
+青	tshinz	75
+
+
+東	tungr	85
+西	sir	85
+南	namz	85
+北	pukx	85
+中	tungr	80
+上	slogts	80
+下	gar	80
+左	tsor	75
+右	yovs	75
+前	tsyenz	75
+後	govz	75
+
+年	nyenz	90
+月	nyetr	90
+日	nhătx	90
+時	svz	85
+今	kĭmr	85
+昨	tsor	80
+明	menz	80
+古	kuvs	75
+新	sinr	75
+舊	kjuvs	75
+
+馬	mavs	85
+牛	nyovz	85
+羊	yungz	85
+豬	tslivr	85
+犬	khyenz	80
+雞	kjivr	80
+蛇	saz	80
+鼠	sus	80
+龍	lungz	80
+虎	huvs	75
+兔	thuvs	75
+猴	govz	75
+
+
+木	mukx	85
+竹	tsukx	80
+花	favr	80
+草	tshavs	80
+米	mivs	85
+飯	buenz	80
+水	slivs	80
+茶	daz	80
+酒	tsyovs	80
+肉	nhovts	80
+
+
+山	slanr	90
+水	slivs	90
+木	mukx	90
+火	fovr	90
+土	thov	90
+金	kimr	90
+口	kovs	85
+手	slas	85
+目	mukx	85
+耳	nyivs	85
+心	simr	85
+言	yenz	80
+足	tsukx	80
+力	litr	80
+刀	dawz	80
+門	munz	80
+田	tienz	80
+石	sĕts	80
+
+
+大	taiv	90
+小	sliavs	90
+多	dor	90
+少	savs	90
+好	havs	90
+是	svs	90
+不	buts	90
+無	muz	90
+有	yovs	90
+來	lais	85
+去	khivs	85
+入	yĭpx	85
+出	tshutr	85
+見	kjens	85
+說	slots	85
+能	nungz	80
+知	tsvr	80
+學	hokx	80
+
+
+王	wungz	80
+民	minz	80
+國	kwokx	80
+文	munz	80
+字	tsivs	80
+書	svr	80
+道	dawz	80
+法	fats	80
+神	sĭnz	80
+鬼	kwivs	75
+仙	yenz	75
+佛	futs	75
