@@ -4,6 +4,7 @@ import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, type ISectionOptions } from 'docx'
 import { cacheExport, getCachedExport } from '@/db/dexie'
+import { useAppContext } from '@/contexts/AppContext'
 
 interface ExportState {
   isExporting: boolean
@@ -13,6 +14,7 @@ interface ExportState {
 }
 
 export function useExport() {
+  const { addNotification } = useAppContext()
   const [state, setState] = useState<ExportState>({
     isExporting: false,
     progress: 0,
@@ -147,16 +149,30 @@ export function useExport() {
       // Cleanup
       document.body.removeChild(container)
 
+      // Success notification
+      addNotification({
+        type: 'success',
+        message: 'Xuất PNG thành công',
+        duration: 3000,
+      })
+
       setState({ isExporting: false, progress: 100, format: null, error: null })
     } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Lỗi xuất PNG'
       setState({
         isExporting: false,
         progress: 0,
         format: null,
-        error: err instanceof Error ? err.message : 'Lỗi xuất PNG',
+        error: errorMessage,
+      })
+      // Error notification
+      addNotification({
+        type: 'error',
+        message: `Lỗi xuất PNG: ${errorMessage}`,
+        duration: 5000,
       })
     }
-  }, [getEditorDOM])
+  }, [getEditorDOM, addNotification])
 
   // Export to PDF
   const exportPDF = useCallback(async (editor: Editor, filename?: string) => {
@@ -256,16 +272,31 @@ export function useExport() {
       URL.revokeObjectURL(url)
 
       document.body.removeChild(container)
+
+      // Success notification
+      addNotification({
+        type: 'success',
+        message: 'Xuất PDF thành công',
+        duration: 3000,
+      })
+
       setState({ isExporting: false, progress: 100, format: null, error: null })
     } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Lỗi xuất PDF'
       setState({
         isExporting: false,
         progress: 0,
         format: null,
-        error: err instanceof Error ? err.message : 'Lỗi xuất PDF',
+        error: errorMessage,
+      })
+      // Error notification
+      addNotification({
+        type: 'error',
+        message: `Lỗi xuất PDF: ${errorMessage}`,
+        duration: 5000,
       })
     }
-  }, [getEditorDOM])
+  }, [getEditorDOM, addNotification])
 
   // Export to DOCX
   const exportDOCX = useCallback(async (editor: Editor, filename?: string) => {
@@ -413,16 +444,30 @@ export function useExport() {
       document.body.removeChild(link)
       URL.revokeObjectURL(url)
 
+      // Success notification
+      addNotification({
+        type: 'success',
+        message: 'Xuất DOCX thành công',
+        duration: 3000,
+      })
+
       setState({ isExporting: false, progress: 100, format: null, error: null })
     } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Lỗi xuất DOCX'
       setState({
         isExporting: false,
         progress: 0,
         format: null,
-        error: err instanceof Error ? err.message : 'Lỗi xuất DOCX',
+        error: errorMessage,
+      })
+      // Error notification
+      addNotification({
+        type: 'error',
+        message: `Lỗi xuất DOCX: ${errorMessage}`,
+        duration: 5000,
       })
     }
-  }, [])
+  }, [addNotification])
 
   return {
     ...state,

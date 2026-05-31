@@ -20,6 +20,8 @@ const PROMPT_TEMPLATE = `Explain the Chinese character "{{hanzi}}" in Vietnamese
 Example response:
 {"meaning":"Người, con người, nhân loại. Chỉ về cá thể trong xã hội.","radical":"Bộ Nhân (人)","sinoVietnamese":"nhân","examples":["人民 (nhân dân - người dân)","人間 (nhân gian - cõi người)","人格 (nhân cách - phẩm giá)"],"strokeCount":2}`
 
+const GEMINI_TIMEOUT_MS = 30000 // 30 seconds timeout
+
 async function callGemini(prompt: string): Promise<string> {
   // Dynamic import to avoid issues if module isn't loaded
   const { GoogleGenAI } = await import('@google/genai')
@@ -30,10 +32,21 @@ async function callGemini(prompt: string): Promise<string> {
   }
 
   const genAI = new GoogleGenAI({ apiKey })
-  const response = await genAI.models.generateContent({
+  
+  // Create timeout promise
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    setTimeout(() => {
+      reject(new Error('Gemini timeout'))
+    }, GEMINI_TIMEOUT_MS)
+  })
+  
+  // Create API call promise
+  const apiPromise = genAI.models.generateContent({
     model: 'gemini-2.0-flash',
     contents: prompt,
   })
+
+  const response = await Promise.race([apiPromise, timeoutPromise])
 
   const text = response.text || ''
   if (!text) {
@@ -73,15 +86,8 @@ export async function explainCharacter(hanzi: string): Promise<CharacterExplanat
       strokeCount: typeof parsed.strokeCount === 'number' ? parsed.strokeCount : 0,
     }
   } catch (err) {
-    // Fallback: basic explanation if API fails
+    // Re-throw error so caller can handle with notification
     const message = err instanceof Error ? err.message : 'Lỗi không xác định'
-    return {
-      hanzi,
-      meaning: `(AI không khả dụng: ${message})`,
-      radical: '—',
-      sinoVietnamese: '—',
-      examples: [],
-      strokeCount: 0,
-    }
+    throw new Error(message)
   }
 }

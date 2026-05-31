@@ -52,11 +52,15 @@ export const PaginationPlugin = () => {
 
           // If next page is empty AND current page has content, join to delete the empty page
           // But only if total pages > 1 (checked above) AND current page is not also empty
+          // GUARD: Don't merge if it would leave the next page empty (we need at least one paragraph per page)
           if (nextChildren.length === 0 && currentChildren.length > 0) {
-            const joinPos = currentPage.pos + currentPage.node.nodeSize
-            tr.join(joinPos)
-            changed = true
-            break
+            // Only merge if we have more than 2 pages, or if current page is not the last one
+            if (pageNodes.length > 2 || i < pageNodes.length - 2) {
+              const joinPos = currentPage.pos + currentPage.node.nodeSize
+              tr.join(joinPos)
+              changed = true
+              break
+            }
           }
 
           if (currentChildren.length === 0) continue

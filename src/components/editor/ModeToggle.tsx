@@ -18,24 +18,50 @@ export default function ModeToggle({ className = '' }: ModeToggleProps) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       {/* Writing Mode Toggle */}
-      <div className="flex bg-gray-800 p-1 rounded-lg border border-gray-700/50">
+      <div
+        style={{
+          backgroundColor: 'var(--color-bg-toolbar)',
+          borderColor: 'var(--color-border)',
+        }}
+        className="flex p-1 rounded-lg border transition-all"
+      >
         <button
           onClick={() => handleWritingModeChange('horizontal-tb')}
-          className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all ${
-            writingMode === 'horizontal-tb'
-              ? 'bg-gray-700 text-white shadow-sm'
-              : 'text-gray-500 hover:text-gray-300'
-          }`}
+          style={{
+            backgroundColor: writingMode === 'horizontal-tb' ? 'var(--color-bg-active)' : 'transparent',
+            color: writingMode === 'horizontal-tb' ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)',
+          }}
+          className="px-3 py-1 rounded-md text-[10px] font-bold transition-all shadow-sm"
+          onMouseEnter={(e) => {
+            if (writingMode !== 'horizontal-tb') {
+              e.currentTarget.style.color = 'var(--color-text-secondary)'
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (writingMode !== 'horizontal-tb') {
+              e.currentTarget.style.color = 'var(--color-text-tertiary)'
+            }
+          }}
         >
           NGANG
         </button>
         <button
           onClick={() => handleWritingModeChange('vertical-rl')}
-          className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all ${
-            writingMode === 'vertical-rl'
-              ? 'bg-gray-700 text-white shadow-sm'
-              : 'text-gray-500 hover:text-gray-300'
-          }`}
+          style={{
+            backgroundColor: writingMode === 'vertical-rl' ? 'var(--color-bg-active)' : 'transparent',
+            color: writingMode === 'vertical-rl' ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)',
+          }}
+          className="px-3 py-1 rounded-md text-[10px] font-bold transition-all shadow-sm"
+          onMouseEnter={(e) => {
+            if (writingMode !== 'vertical-rl') {
+              e.currentTarget.style.color = 'var(--color-text-secondary)'
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (writingMode !== 'vertical-rl') {
+              e.currentTarget.style.color = 'var(--color-text-tertiary)'
+            }
+          }}
         >
           DỌC
         </button>
@@ -44,30 +70,67 @@ export default function ModeToggle({ className = '' }: ModeToggleProps) {
       {/* Grid Toggle */}
       <button
         onClick={toggleGrid}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all border ${
-          showGrid
-            ? 'bg-indigo-600/20 border-indigo-500/40 text-indigo-400 shadow-md shadow-indigo-500/5'
-            : 'bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-600'
-        }`}
+        style={{
+          backgroundColor: showGrid ? 'rgba(79, 70, 229, 0.2)' : 'var(--color-bg-toolbar)',
+          borderColor: showGrid ? 'rgba(79, 70, 229, 0.4)' : 'var(--color-border)',
+          color: showGrid ? 'var(--color-primary-light)' : 'var(--color-text-secondary)',
+        }}
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all border shadow-md"
         title={showGrid ? 'Tắt lưới ô' : 'Bật lưới ô'}
+        onMouseEnter={(e) => {
+          if (!showGrid) {
+            e.currentTarget.style.borderColor = 'var(--color-border-light)'
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!showGrid) {
+            e.currentTarget.style.borderColor = 'var(--color-border)'
+          }
+        }}
       >
-        <div className={`w-1.5 h-1.5 rounded-sm ${showGrid ? 'bg-indigo-400' : 'bg-gray-600'}`} />
+        <div
+          style={{
+            backgroundColor: showGrid ? 'var(--color-primary-light)' : 'var(--color-text-tertiary)',
+          }}
+          className="w-1.5 h-1.5 rounded-sm transition-all"
+        />
         {showGrid ? 'TẮT LƯỚI Ô' : 'BẬT LƯỚI Ô'}
       </button>
 
-      <div className="w-px h-6 bg-gray-800 mx-2" />
+      <div
+        style={{
+          backgroundColor: 'var(--color-border)',
+        }}
+        className="w-px h-6 mx-2 transition-all"
+      />
 
       {/* IME Toggle */}
       <button
         onClick={toggleHanMode}
-        className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-bold transition-all border ${
-          isHanMode
-            ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-500/20'
-            : 'bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-600'
-        }`}
+        style={{
+          backgroundColor: isHanMode ? 'var(--color-primary)' : 'var(--color-bg-toolbar)',
+          borderColor: isHanMode ? 'var(--color-primary)' : 'var(--color-border)',
+          color: isHanMode ? 'white' : 'var(--color-text-secondary)',
+        }}
+        className="flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-bold transition-all border shadow-lg"
         title={isHanMode ? 'Chuyển sang ASCII' : 'Chuyển sang Hán-Dao'}
+        onMouseEnter={(e) => {
+          if (!isHanMode) {
+            e.currentTarget.style.borderColor = 'var(--color-border-light)'
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isHanMode) {
+            e.currentTarget.style.borderColor = 'var(--color-border)'
+          }
+        }}
       >
-        <div className={`w-2 h-2 rounded-full ${isHanMode ? 'bg-white animate-pulse' : 'bg-gray-600'}`} />
+        <div
+          style={{
+            backgroundColor: isHanMode ? 'white' : 'var(--color-text-tertiary)',
+          }}
+          className={`w-2 h-2 rounded-full ${isHanMode ? 'animate-pulse' : ''} transition-all`}
+        />
         {isHanMode ? 'HÁN-DAO MODE' : 'ASCII MODE'}
       </button>
     </div>

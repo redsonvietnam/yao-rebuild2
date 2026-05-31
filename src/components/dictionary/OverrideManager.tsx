@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { addOverride, listOverrides, updateOverride, deleteOverride, clearAllOverrides, type UserDictEntry } from '@/db/dexie'
 import { useEditorStore } from '@/editor/useEditorStore'
+import { useAppContext } from '@/contexts/AppContext'
 
 export default function OverrideManager() {
   const [overrides, setOverrides] = useState<UserDictEntry[]>([])
@@ -10,6 +11,7 @@ export default function OverrideManager() {
   const [editingId, setEditingId] = useState<number | null>(null)
   const [confirmDeleteAll, setConfirmDeleteAll] = useState(false)
   const refreshUserDict = useEditorStore(state => state.refreshUserDict)
+  const { addNotification } = useAppContext()
 
   // Form state
   const [formKey, setFormKey] = useState('')
@@ -77,8 +79,18 @@ export default function OverrideManager() {
       await loadOverrides()
       // Refresh the IME merged dict
       await refreshUserDict()
+      addNotification({
+        type: 'success',
+        message: 'Đã thêm mục từ',
+        duration: 3000,
+      })
     } catch (err) {
       setFormError('Lỗi khi thêm mục. Có thể trùng khóa?')
+      addNotification({
+        type: 'error',
+        message: 'Lỗi khi thêm mục từ',
+        duration: 5000,
+      })
     }
   }
 
@@ -94,8 +106,18 @@ export default function OverrideManager() {
       resetForm()
       await loadOverrides()
       await refreshUserDict()
+      addNotification({
+        type: 'success',
+        message: 'Đã cập nhật mục từ',
+        duration: 3000,
+      })
     } catch {
       setFormError('Lỗi khi cập nhật mục.')
+      addNotification({
+        type: 'error',
+        message: 'Lỗi khi cập nhật mục từ',
+        duration: 5000,
+      })
     }
   }
 
@@ -104,8 +126,17 @@ export default function OverrideManager() {
       await deleteOverride(id)
       await loadOverrides()
       await refreshUserDict()
+      addNotification({
+        type: 'success',
+        message: 'Đã xóa mục từ',
+        duration: 3000,
+      })
     } catch {
-      // ignore
+      addNotification({
+        type: 'error',
+        message: 'Lỗi khi xóa mục từ',
+        duration: 5000,
+      })
     }
   }
 
@@ -115,8 +146,17 @@ export default function OverrideManager() {
       await loadOverrides()
       await refreshUserDict()
       setConfirmDeleteAll(false)
+      addNotification({
+        type: 'success',
+        message: 'Đã xóa tất cả mục cá nhân',
+        duration: 3000,
+      })
     } catch {
-      // ignore
+      addNotification({
+        type: 'error',
+        message: 'Lỗi khi xóa tất cả mục',
+        duration: 5000,
+      })
     }
   }
 

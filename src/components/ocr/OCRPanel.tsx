@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { createWorker } from 'tesseract.js'
 import { simpleHash, getCachedOCR, cacheOCR } from '@/db/dexie'
+import { useAppContext } from '@/contexts/AppContext'
 
 interface OCRResult {
   text: string
@@ -9,8 +10,12 @@ interface OCRResult {
   lines: string[]
 }
 
-export default function OCRPanel() {
-  const [isOpen, setIsOpen] = useState(false)
+interface OCRPanelProps {
+  isOpen?: boolean
+  onClose?: () => void
+}
+
+export default function OCRPanel({ isOpen = false, onClose }: OCRPanelProps) {
   const [image, setImage] = useState<string | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
   const [progress, setProgress] = useState(0)
@@ -19,6 +24,7 @@ export default function OCRPanel() {
   const [language, setLanguage] = useState<'chi_sim' | 'vie' | 'eng'>('chi_sim')
   const fileInputRef = useRef<HTMLInputElement>(null)
   const dropZoneRef = useRef<HTMLDivElement>(null)
+  const { addNotification } = useAppContext()
 
   const reset = useCallback(() => {
     setImage(null)
@@ -119,6 +125,13 @@ export default function OCRPanel() {
         // ignore cache errors
       }
 
+      // Show success notification
+      addNotification({
+        type: 'info',
+        message: 'Nhận dạng hoàn tất',
+        duration: 4000
+      })
+
     } catch (err) {
       console.error('OCR error:', err)
       setError('Lỗi xử lý ảnh. Thử lại với ảnh khác.')
@@ -140,32 +153,9 @@ export default function OCRPanel() {
   }
 
   return (
-    <>
-      {/* Toggle Button — floating bottom-right */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`fixed right-16 bottom-6 z-[75] p-2.5 rounded-xl border transition-all duration-200 ${
-          isOpen
-            ? 'bg-indigo-600/20 border-indigo-500/40 text-indigo-400'
-            : 'bg-gray-900/90 border-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-800 shadow-lg'
-        }`}
-        title="Nhận dạng ký tự (OCR)"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      </button>
-
-      {/* Panel */}
-      <AnimatePresence>
+    <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ x: 400, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 400, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed right-0 bottom-0 w-[400px] h-[520px] bg-gray-900/95 backdrop-blur-xl border-l border-t border-gray-800 z-[76] flex flex-col shadow-2xl rounded-tl-2xl"
-          >
+          <div className="h-full w-full bg-gray-900/95 backdrop-blur-xl flex flex-col shadow-2xl transition-colors">
             {/* Header */}
             <div className="shrink-0 px-4 py-3 border-b border-gray-800 flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -181,14 +171,16 @@ export default function OCRPanel() {
                 >
                   XÓA
                 </button>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-1 rounded hover:bg-gray-800 text-gray-500 hover:text-gray-300 transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
+                {onClose && (
+                  <button
+                    onClick={onClose}
+                    className="p-1 rounded hover:bg-gray-800 text-gray-500 hover:text-gray-300 transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -388,9 +380,8 @@ export default function OCRPanel() {
                 </button>
               </div>
             )}
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
-    </>
   )
 }

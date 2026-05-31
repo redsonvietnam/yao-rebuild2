@@ -61,18 +61,21 @@ export default function Ruler() {
   return (
     <div
       ref={rulerRef}
+      className="ruler-container"
       style={{
         width: '210mm',
         height: '28px',
-        background: '#1e293b',
-        border: '1px solid #334155',
         borderRadius: '6px',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         userSelect: 'none',
         flexShrink: 0,
-        boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+        backgroundColor: 'var(--color-bg-tertiary)',
+        borderColor: 'var(--color-border)',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        boxShadow: 'var(--shadow-md)',
       }}
     >
       {/* Tick marks */}
@@ -93,7 +96,7 @@ export default function Ruler() {
         >
           <span style={{
             fontSize: '9px',
-            color: '#94a3b8',
+            color: 'var(--color-text-tertiary)',
             fontFamily: 'monospace',
             lineHeight: 1,
             marginTop: '2px',
@@ -101,7 +104,7 @@ export default function Ruler() {
           <div style={{
             width: '1px',
             height: cm % 5 === 0 ? '8px' : '4px',
-            background: cm % 5 === 0 ? '#6366f1' : '#475569',
+            background: cm % 5 === 0 ? 'var(--color-primary)' : 'var(--color-border-light)',
             marginBottom: '2px',
           }} />
         </div>
@@ -114,8 +117,9 @@ export default function Ruler() {
         top: 0,
         bottom: 0,
         width: `${(marginLeft / 210) * 100}%`,
-        background: 'rgba(15, 23, 42, 0.5)',
-        borderRight: '2px solid rgba(99, 102, 241, 0.6)',
+        background: 'var(--color-bg-secondary)',
+        opacity: 0.5,
+        borderRight: '2px solid var(--color-primary)',
       }} />
 
       {/* Right margin overlay */}
@@ -125,8 +129,9 @@ export default function Ruler() {
         top: 0,
         bottom: 0,
         width: `${(marginRight / 210) * 100}%`,
-        background: 'rgba(15, 23, 42, 0.5)',
-        borderLeft: '2px solid rgba(99, 102, 241, 0.6)',
+        background: 'var(--color-bg-secondary)',
+        opacity: 0.5,
+        borderLeft: '2px solid var(--color-primary)',
       }} />
 
       {/* Left drag handle */}
@@ -149,9 +154,9 @@ export default function Ruler() {
         <div style={{
           width: '10px',
           height: '18px',
-          background: isDraggingLeft ? '#a5b4fc' : '#6366f1',
+          background: isDraggingLeft ? 'var(--color-primary-light)' : 'var(--color-primary)',
           borderRadius: '3px',
-          boxShadow: isDraggingLeft ? '0 0 8px rgba(99,102,241,0.8)' : '0 2px 4px rgba(0,0,0,0.4)',
+          boxShadow: isDraggingLeft ? '0 0 8px var(--color-primary)' : 'var(--shadow-sm)',
           transition: 'background 0.15s',
         }} />
       </div>
@@ -176,9 +181,9 @@ export default function Ruler() {
         <div style={{
           width: '10px',
           height: '18px',
-          background: isDraggingRight ? '#a5b4fc' : '#6366f1',
+          background: isDraggingRight ? 'var(--color-primary-light)' : 'var(--color-primary)',
           borderRadius: '3px',
-          boxShadow: isDraggingRight ? '0 0 8px rgba(99,102,241,0.8)' : '0 2px 4px rgba(0,0,0,0.4)',
+          boxShadow: isDraggingRight ? '0 0 8px var(--color-primary)' : 'var(--shadow-sm)',
           transition: 'background 0.15s',
         }} />
       </div>

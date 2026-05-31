@@ -2,6 +2,7 @@ import { useEffect, useRef, useCallback, useState } from 'react'
 import type { Editor } from '@tiptap/core'
 import { saveDocument, getLatestAutoSave, type DocumentEntry } from '@/db/dexie'
 import { useEditorStore } from '@/editor/useEditorStore'
+import { useAppContext } from '@/contexts/AppContext'
 
 export type SaveStatus = 'idle' | 'saving' | 'saved'
 
@@ -10,6 +11,7 @@ export function useAutoSave(editor: Editor | null) {
   const [lastSavedAt, setLastSavedAt] = useState<number | null>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isRestoringRef = useRef(false)
+  const { addNotification } = useAppContext()
 
   const writingMode = useEditorStore(state => state.writingMode)
   const pageSize = useEditorStore(state => state.pageSize)
@@ -50,10 +52,17 @@ export function useAutoSave(editor: Editor | null) {
       })
       setSaveStatus('saved')
       setLastSavedAt(now)
-    } catch {
+      // Không hiển thị notification cho auto-save
+    } catch (error) {
       setSaveStatus('idle')
+      const errorMessage = error instanceof Error ? error.message : 'Lưu tài liệu thất bại'
+      addNotification({
+        type: 'error',
+        message: errorMessage,
+        duration: 5000,
+      })
     }
-  }, [editor, writingMode, pageSize, marginLeft, marginRight, marginTop, marginBottom])
+  }, [editor, writingMode, pageSize, marginLeft, marginRight, marginTop, marginBottom, addNotification])
 
   // Debounced save trigger
   const triggerSave = useCallback(() => {

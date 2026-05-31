@@ -97,20 +97,35 @@ class YaoEditorDB extends Dexie {
 
   constructor() {
     super('YaoEditorDB')
-    this.version(3).stores({
+    this.version(5).stores({
       dictCache: '++id, query, cachedAt',
       searchHistory: '++id, query, searchedAt',
       documents: '++id, docId, updatedAt, createdAt, isAutoSaved',
       settings: '++id, key',
       exportCache: '++id, docId, format, cachedAt',
       ocrCache: '++id, imageHash, cachedAt',
-      userDict: '++id, key, hanzi',
+      userDict: '++id, key, hanzi, updatedAt',
       templates: '++id, title, category',
     })
   }
 }
 
 export const db = new YaoEditorDB()
+
+// Handle database upgrade errors by clearing the database
+db.open().catch(async (error: unknown) => {
+  const err = error as any
+  if (err?.name === 'UpgradeError' || err?.message?.includes('primary key')) {
+    console.warn('Database schema conflict. Clearing old database...')
+    try {
+      await Dexie.delete('YaoEditorDB')
+      console.log('Old database cleared. Please refresh the page.')
+      window.location.reload()
+    } catch (deleteError) {
+      console.error('Failed to clear database:', deleteError)
+    }
+  }
+})
 
 // === Storage Service Helpers ===
 

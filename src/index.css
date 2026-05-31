@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-/* ─── CSS Global Variables ─────────────────────────────── */
+/* ─── Premium Design System CSS Variables ─────────────────── */
 :root {
+  /* Layout */
   --grid-size: 40px;
   --page-width: 210mm;
   --page-height: 297mm;
@@ -11,20 +12,131 @@
   --margin-left: 20mm;
   --writing-mode: horizontal-tb;
   --font-main: 'Noto Serif CJK', serif;
+
+  /* Dark Theme (Default) */
+  --color-bg-primary: #030712;
+  --color-bg-secondary: #0f172a;
+  --color-bg-tertiary: #1e293b;
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-text-tertiary: #9ca3af;
+  --color-border: #1f2937;
+  --color-border-light: #374151;
+
+  /* Additional dark theme colors for components */
+  --color-bg-toolbar: #111827;
+  --color-bg-hover: #1f2937;
+  --color-bg-active: #374151;
+
+  /* Premium Color Palette */
+  --color-primary: #4f46e5;
+  --color-primary-light: #6366f1;
+  --color-primary-dark: #4338ca;
+  
+  --color-success: #10b981;
+  --color-success-light: #34d399;
+  --color-success-dark: #059669;
+  
+  --color-error: #ef4444;
+  --color-error-light: #f87171;
+  --color-error-dark: #dc2626;
+  
+  --color-warning: #f59e0b;
+  --color-warning-light: #fbbf24;
+  --color-warning-dark: #d97706;
+  
+  --color-info: #3b82f6;
+  --color-info-light: #60a5fa;
+  --color-info-dark: #1d4ed8;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ─── Base ─────────────────────────────────────────────── */
+/* Light Theme */
+html.light {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-bg-tertiary: #f3f4f6;
+  --color-text-primary: #111827;
+  --color-text-secondary: #374151;
+  --color-text-tertiary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-border-light: #d1d5db;
+  
+  /* Additional light theme colors for components */
+  --color-bg-toolbar: #f3f4f6;
+  --color-bg-hover: #e5e7eb;
+  --color-bg-active: #d1d5db;
+}
+
+/* ─── Base Styles ───────────────────────────────────────── */
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #030712;
-  color: #f9fafb;
-  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 50%, var(--color-bg-primary) 100%);
+  color: var(--color-text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* ─── Typography System ─────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+/* ─── Focus & Selection ─────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: white;
 }
 
 /* ─── Page Layout ───────────────────────────────────────── */
@@ -38,7 +150,6 @@ body {
   min-height: 100%;
 }
 
-/* If any page inside is writing-vertical, layout the pages horizontally from right to left */
 .ProseMirror:has(.writing-vertical) {
   flex-direction: row-reverse;
   justify-content: center;
@@ -54,26 +165,34 @@ body {
   padding: var(--margin-top) var(--margin-right) var(--margin-bottom) var(--margin-left);
   background: white;
   color: black;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-premium);
   position: relative;
   outline: none;
   overflow: hidden;
   box-sizing: border-box;
   flex-shrink: 0;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  border-radius: 8px;
+}
+
+.yao-page:hover {
+  transform: translateY(-2px);
 }
 
 .yao-page:focus-within {
-  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25), 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.25), var(--shadow-premium);
 }
 
-/* Vertical writing mode specifically for the page */
 .yao-page.writing-vertical {
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
 
-/* Ensure blocks behave in both modes */
+.yao-page.page-landscape {
+  width: var(--page-height);
+  height: var(--page-width);
+}
+
 .yao-page p {
   margin: 0;
   line-height: var(--grid-size);
@@ -86,16 +205,15 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* ─── Grid Overlay (Hán-Nôm Style) ───────────────────────── */
+/* ─── Grid Overlay (Premium Style) ──────────────────────── */
 .show-grid .yao-page {
   background-image: 
-    linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+    linear-gradient(to right, rgba(79, 70, 229, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79, 70, 229, 0.08) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
   background-position: var(--margin-left) var(--margin-top);
 }
 
-/* Red border indicating margins (ancient book style) */
 .show-grid .yao-page::before {
   content: "";
   position: absolute;
@@ -103,16 +221,324 @@ body {
   left: var(--margin-left);
   right: var(--margin-right);
   bottom: var(--margin-bottom);
-  border: 1px solid rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(79, 70, 229, 0.15);
   pointer-events: none;
   z-index: 10;
 }
 
-/* Placeholder for Tiptap */
+/* ─── Editor Container Styles ─────────────────────────────── */
+.editor-container {
+  background-color: var(--color-bg-primary);
+  transition: background-color var(--transition-base);
+}
+
+/* ─── Ruler Wrapper Styles ────────────────────────────────── */
+.ruler-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  z-index: 95;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+/* ─── Toolbar Styles ─────────────────────────────────────── */
+.editor-toolbar {
+  background-color: var(--color-bg-toolbar);
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+  transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base);
+}
+
+.editor-toolbar button {
+  color: var(--color-text-secondary);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.editor-toolbar button:hover:not(:disabled) {
+  background-color: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+.editor-toolbar button:active:not(:disabled) {
+  background-color: var(--color-bg-active);
+}
+
+.editor-toolbar button.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.editor-toolbar .divider {
+  background-color: var(--color-border);
+}
+
+/* Light theme overrides for Tailwind classes */
+html.light .bg-gray-800 {
+  background-color: var(--color-bg-hover);
+}
+
+html.light .bg-gray-900 {
+  background-color: var(--color-bg-toolbar);
+}
+
+html.light .bg-gray-750 {
+  background-color: var(--color-bg-active);
+}
+
+html.light .text-gray-400 {
+  color: var(--color-text-secondary);
+}
+
+html.light .text-gray-500 {
+  color: var(--color-text-secondary);
+}
+
+html.light .text-gray-300 {
+  color: var(--color-text-primary);
+}
+
+html.light .border-gray-800 {
+  border-color: var(--color-border);
+}
+
+html.light .border-gray-700 {
+  border-color: var(--color-border);
+}
 .tiptap p.is-editor-empty:first-child::before {
-  color: #adb5bd;
+  color: var(--color-text-tertiary);
   content: attr(data-placeholder);
   float: left;
   height: 0;
   pointer-events: none;
 }
+
+/* ─── Scrollbar Styling (Premium) ──────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  background-clip: padding-box;
+}
+
+/* ─── Custom Scrollbar Class ────────────────────────────── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(79, 70, 229, 0.6) 0%, rgba(67, 56, 202, 0.6) 100%);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.8) 0%, rgba(79, 70, 229, 0.8) 100%);
+  background-clip: padding-box;
+}
+
+/* ─── Button Base Styles ────────────────────────────────── */
+button {
+  transition: all var(--transition-fast);
+  font-weight: 500;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ─── Input Base Styles ─────────────────────────────────── */
+input, textarea, select {
+  transition: all var(--transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* ─── Backdrop Blur Support ─────────────────────────────── */
+@supports (backdrop-filter: blur(1px)) {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+  
+  .backdrop-blur-lg {
+    backdrop-filter: blur(20px);
+  }
+}
+
+/* ─── Animation Keyframes ───────────────────────────────── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ─── Utility Classes ───────────────────────────────────── */
+.glass {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light .glass {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+}
+
+.gradient-error {
+  background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+.gradient-info {
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-premium {
+  box-shadow: var(--shadow-premium);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+}
+
+.shadow-glow-success {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.shadow-glow-error {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.shadow-glow-warning {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+}
+
+.shadow-glow-info {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.transition-smooth {
+  transition: all var(--transition-base);
+}
+
+.transition-fast {
+  transition: all var(--transition-fast);
+}
+
+.transition-slow {
+  transition: all var(--transition-slow);
+}
+
+/* ─── Base Styles ───────────────────────────────────────── */

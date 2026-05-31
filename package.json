@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@google/genai": "^1.0.0",
+    "@heroicons/react": "^2.2.0",
     "@tiptap/pm": "^2.11.7",
     "@tiptap/react": "^2.11.7",
     "@tiptap/starter-kit": "^2.11.7",
@@ -29,6 +30,7 @@
     "zustand": "^5.0.4"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.6",
     "@types/better-sqlite3": "^7.6.12",
     "@types/express": "^5.0.3",
     "@types/js-yaml": "^4.0.9",
@@ -38,7 +40,6 @@
     "@vitejs/plugin-react": "^4.5.0",
     "js-yaml": "^4.1.0",
     "tailwindcss": "^4.1.6",
-    "@tailwindcss/vite": "^4.1.6",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"

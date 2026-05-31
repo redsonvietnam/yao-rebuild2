@@ -103,7 +103,10 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200]"
+            style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            }}
+            className="fixed inset-0 backdrop-blur-sm z-[200]"
             onClick={onClose}
           />
 
@@ -113,19 +116,50 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[210] w-[480px] bg-gray-900/95 backdrop-blur-xl border border-gray-700/50 rounded-2xl shadow-2xl overflow-hidden"
+            style={{
+              backgroundColor: 'rgba(15, 23, 42, 0.95)',
+              borderColor: 'rgba(55, 65, 81, 0.5)',
+            }}
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[210] w-[480px] border rounded-2xl shadow-2xl overflow-hidden"
           >
             {/* Header */}
-            <div className="px-5 py-4 border-b border-gray-800 flex items-center justify-between">
+            <div
+              style={{
+                borderBottomColor: 'var(--color-border)',
+              }}
+              className="px-5 py-4 border-b flex items-center justify-between"
+            >
               <div className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg
+                  className="w-4 h-4"
+                  style={{ color: 'var(--color-primary-light)' }}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm0 8a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zm12 0a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                 </svg>
-                <h2 className="text-sm font-bold text-white tracking-tight">BỐ CỤC TRANG</h2>
+                <h2
+                  style={{ color: 'var(--color-text-primary)' }}
+                  className="text-sm font-bold tracking-tight"
+                >
+                  BỐ CỤC TRANG
+                </h2>
               </div>
               <button
                 onClick={onClose}
-                className="p-1 rounded hover:bg-gray-800 text-gray-500 hover:text-gray-300 transition-colors"
+                style={{
+                  color: 'var(--color-text-tertiary)',
+                }}
+                className="p-1 rounded transition-colors"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(55, 65, 81, 0.5)'
+                  e.currentTarget.style.color = 'var(--color-text-secondary)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent'
+                  e.currentTarget.style.color = 'var(--color-text-tertiary)'
+                }}
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -137,7 +171,10 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
             <div className="p-5 flex flex-col gap-5">
               {/* Page Size Selector */}
               <div>
-                <label className="text-[10px] text-gray-500 font-medium mb-2 block uppercase tracking-wider">
+                <label
+                  style={{ color: 'var(--color-text-tertiary)' }}
+                  className="text-[10px] font-medium mb-2 block uppercase tracking-wider"
+                >
                   Khổ giấy
                 </label>
                 <div className="flex gap-2">
@@ -145,11 +182,22 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
                     <button
                       key={size}
                       onClick={() => setLocalPageSize(size)}
-                      className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold border transition-all ${
-                        localPageSize === size
-                          ? 'bg-indigo-600/20 border-indigo-500/40 text-indigo-400'
-                          : 'bg-gray-800/50 border-gray-700/50 text-gray-400 hover:border-gray-600'
-                      }`}
+                      style={{
+                        backgroundColor: localPageSize === size ? 'rgba(79, 70, 229, 0.2)' : 'rgba(30, 41, 59, 0.5)',
+                        borderColor: localPageSize === size ? 'rgba(79, 70, 229, 0.4)' : 'rgba(55, 65, 81, 0.5)',
+                        color: localPageSize === size ? 'var(--color-primary-light)' : 'var(--color-text-tertiary)',
+                      }}
+                      className="flex-1 py-2 px-3 rounded-lg text-xs font-bold border transition-all hover:border-gray-600"
+                      onMouseEnter={(e) => {
+                        if (localPageSize !== size) {
+                          e.currentTarget.style.borderColor = 'rgba(75, 85, 99, 0.7)'
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (localPageSize !== size) {
+                          e.currentTarget.style.borderColor = 'rgba(55, 65, 81, 0.5)'
+                        }
+                      }}
                     >
                       {size}
                     </button>
@@ -159,7 +207,10 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
 
               {/* Presets */}
               <div>
-                <label className="text-[10px] text-gray-500 font-medium mb-2 block uppercase tracking-wider">
+                <label
+                  style={{ color: 'var(--color-text-tertiary)' }}
+                  className="text-[10px] font-medium mb-2 block uppercase tracking-wider"
+                >
                   Mẫu lề có sẵn
                 </label>
                 <div className="grid grid-cols-5 gap-1.5">
@@ -173,11 +224,24 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
                     <button
                       key={preset.id}
                       onClick={() => applyPreset(preset.id)}
-                      className={`py-1.5 px-2 rounded-md text-[10px] font-medium border transition-all ${
-                        activePreset === preset.id
-                          ? 'bg-indigo-600/20 border-indigo-500/40 text-indigo-400'
-                          : 'bg-gray-800/50 border-gray-700/50 text-gray-500 hover:text-gray-300 hover:border-gray-600'
-                      }`}
+                      style={{
+                        backgroundColor: activePreset === preset.id ? 'rgba(79, 70, 229, 0.2)' : 'rgba(30, 41, 59, 0.5)',
+                        borderColor: activePreset === preset.id ? 'rgba(79, 70, 229, 0.4)' : 'rgba(55, 65, 81, 0.5)',
+                        color: activePreset === preset.id ? 'var(--color-primary-light)' : 'var(--color-text-tertiary)',
+                      }}
+                      className="py-1.5 px-2 rounded-md text-[10px] font-medium border transition-all"
+                      onMouseEnter={(e) => {
+                        if (activePreset !== preset.id) {
+                          e.currentTarget.style.color = 'var(--color-text-secondary)'
+                          e.currentTarget.style.borderColor = 'rgba(75, 85, 99, 0.7)'
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (activePreset !== preset.id) {
+                          e.currentTarget.style.color = 'var(--color-text-tertiary)'
+                          e.currentTarget.style.borderColor = 'rgba(55, 65, 81, 0.5)'
+                        }
+                      }}
                     >
                       {preset.label}
                     </button>
@@ -187,52 +251,127 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
 
               {/* Margin Inputs */}
               <div>
-                <label className="text-[10px] text-gray-500 font-medium mb-2 block uppercase tracking-wider">
+                <label
+                  style={{ color: 'var(--color-text-tertiary)' }}
+                  className="text-[10px] font-medium mb-2 block uppercase tracking-wider"
+                >
                   Lề (mm) — tùy chỉnh
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
-                    <label className="text-[9px] text-gray-600 font-medium">Lề trên</label>
+                    <label
+                      style={{ color: 'var(--color-text-tertiary)' }}
+                      className="text-[9px] font-medium"
+                    >
+                      Lề trên
+                    </label>
                     <input
                       type="number"
                       min={5}
                       max={80}
                       value={localTop}
                       onChange={e => { setLocalTop(Number(e.target.value)); setActivePreset('custom') }}
-                      className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 w-full"
+                      style={{
+                        backgroundColor: 'var(--color-bg-tertiary)',
+                        borderColor: 'var(--color-border)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                      className="rounded-lg px-3 py-1.5 text-sm focus:outline-none w-full transition-all"
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(79, 70, 229, 0.5)'
+                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)'
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--color-border)'
+                        e.currentTarget.style.boxShadow = 'none'
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <label className="text-[9px] text-gray-600 font-medium">Lề dưới</label>
+                    <label
+                      style={{ color: 'var(--color-text-tertiary)' }}
+                      className="text-[9px] font-medium"
+                    >
+                      Lề dưới
+                    </label>
                     <input
                       type="number"
                       min={5}
                       max={80}
                       value={localBottom}
                       onChange={e => { setLocalBottom(Number(e.target.value)); setActivePreset('custom') }}
-                      className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 w-full"
+                      style={{
+                        backgroundColor: 'var(--color-bg-tertiary)',
+                        borderColor: 'var(--color-border)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                      className="rounded-lg px-3 py-1.5 text-sm focus:outline-none w-full transition-all"
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(79, 70, 229, 0.5)'
+                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)'
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--color-border)'
+                        e.currentTarget.style.boxShadow = 'none'
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <label className="text-[9px] text-gray-600 font-medium">Lề trái</label>
+                    <label
+                      style={{ color: 'var(--color-text-tertiary)' }}
+                      className="text-[9px] font-medium"
+                    >
+                      Lề trái
+                    </label>
                     <input
                       type="number"
                       min={5}
                       max={80}
                       value={localLeft}
                       onChange={e => { setLocalLeft(Number(e.target.value)); setActivePreset('custom') }}
-                      className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 w-full"
+                      style={{
+                        backgroundColor: 'var(--color-bg-tertiary)',
+                        borderColor: 'var(--color-border)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                      className="rounded-lg px-3 py-1.5 text-sm focus:outline-none w-full transition-all"
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(79, 70, 229, 0.5)'
+                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)'
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--color-border)'
+                        e.currentTarget.style.boxShadow = 'none'
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <label className="text-[9px] text-gray-600 font-medium">Lề phải</label>
+                    <label
+                      style={{ color: 'var(--color-text-tertiary)' }}
+                      className="text-[9px] font-medium"
+                    >
+                      Lề phải
+                    </label>
                     <input
                       type="number"
                       min={5}
                       max={80}
                       value={localRight}
                       onChange={e => { setLocalRight(Number(e.target.value)); setActivePreset('custom') }}
-                      className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 w-full"
+                      style={{
+                        backgroundColor: 'var(--color-bg-tertiary)',
+                        borderColor: 'var(--color-border)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                      className="rounded-lg px-3 py-1.5 text-sm focus:outline-none w-full transition-all"
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(79, 70, 229, 0.5)'
+                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)'
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--color-border)'
+                        e.currentTarget.style.boxShadow = 'none'
+                      }}
                     />
                   </div>
                 </div>
@@ -240,26 +379,33 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
 
               {/* Preview */}
               <div>
-                <label className="text-[10px] text-gray-500 font-medium mb-2 block uppercase tracking-wider">
+                <label
+                  style={{ color: 'var(--color-text-tertiary)' }}
+                  className="text-[10px] font-medium mb-2 block uppercase tracking-wider"
+                >
                   Xem trước bố cục
                 </label>
                 <div className="flex justify-center">
                   <div
-                    className="relative bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden"
                     style={{
+                      backgroundColor: 'rgba(30, 41, 59, 0.5)',
+                      borderColor: 'var(--color-border)',
                       width: `${Math.min(pageWidth / 2, 200)}px`,
                       height: `${Math.min(pageHeight / 2, 260)}px`,
                     }}
+                    className="relative rounded-lg overflow-hidden border"
                   >
                     {/* Margins visualization */}
                     <div
-                      className="absolute border border-indigo-500/30 bg-gray-700/30"
                       style={{
+                        borderColor: 'rgba(79, 70, 229, 0.3)',
+                        backgroundColor: 'rgba(30, 41, 59, 0.3)',
                         top: `${(localTop / pageHeight) * 100}%`,
                         right: `${(localRight / pageWidth) * 100}%`,
                         bottom: `${(localBottom / pageHeight) * 100}%`,
                         left: `${(localLeft / pageWidth) * 100}%`,
                       }}
+                      className="absolute border"
                     >
                       {/* Inline text preview */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-50">
@@ -267,10 +413,11 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
                           {Array.from({ length: Math.min(Math.floor((pageHeight - localTop - localBottom) / 12), 12) }).map((_, i) => (
                             <div
                               key={i}
-                              className="h-[2px] bg-gray-500/50 rounded"
                               style={{
+                                backgroundColor: 'rgba(107, 114, 128, 0.5)',
                                 width: `${Math.max(30, ((pageWidth - localLeft - localRight) / pageWidth) * 180)}px`,
                               }}
+                              className="h-[2px] rounded"
                             />
                           ))}
                         </div>
@@ -278,16 +425,28 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
                     </div>
 
                     {/* Labels */}
-                    <span className="absolute top-1 left-1/2 -translate-x-1/2 text-[7px] text-gray-600 font-mono">
+                    <span
+                      style={{ color: 'var(--color-text-tertiary)' }}
+                      className="absolute top-1 left-1/2 -translate-x-1/2 text-[7px] font-mono"
+                    >
                       {localTop}mm
                     </span>
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[7px] text-gray-600 font-mono">
+                    <span
+                      style={{ color: 'var(--color-text-tertiary)' }}
+                      className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[7px] font-mono"
+                    >
                       {localBottom}mm
                     </span>
-                    <span className="absolute left-1 top-1/2 -translate-y-1/2 text-[7px] text-gray-600 font-mono">
+                    <span
+                      style={{ color: 'var(--color-text-tertiary)' }}
+                      className="absolute left-1 top-1/2 -translate-y-1/2 text-[7px] font-mono"
+                    >
                       {localLeft}
                     </span>
-                    <span className="absolute right-1 top-1/2 -translate-y-1/2 text-[7px] text-gray-600 font-mono">
+                    <span
+                      style={{ color: 'var(--color-text-tertiary)' }}
+                      className="absolute right-1 top-1/2 -translate-y-1/2 text-[7px] font-mono"
+                    >
                       {localRight}
                     </span>
                   </div>
@@ -296,23 +455,61 @@ export default function LayoutModal({ isOpen, onClose }: LayoutModalProps) {
             </div>
 
             {/* Footer */}
-            <div className="px-5 py-3 border-t border-gray-800 flex items-center justify-between gap-3">
+            <div
+              style={{
+                borderTopColor: 'var(--color-border)',
+              }}
+              className="px-5 py-3 border-t flex items-center justify-between gap-3"
+            >
               <button
                 onClick={handleReset}
-                className="px-3 py-1.5 text-[10px] text-gray-500 hover:text-red-400 transition-colors font-medium"
+                style={{
+                  color: 'var(--color-text-tertiary)',
+                }}
+                className="px-3 py-1.5 text-[10px] transition-colors font-medium"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--color-error-light)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'var(--color-text-tertiary)'
+                }}
               >
                 ĐẶT LẠI MẶC ĐỊNH
               </button>
               <div className="flex gap-2">
                 <button
                   onClick={onClose}
-                  className="px-4 py-1.5 rounded-lg text-xs font-medium text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-700/50 transition-all"
+                  style={{
+                    color: 'var(--color-text-secondary)',
+                    borderColor: 'rgba(55, 65, 81, 0.5)',
+                  }}
+                  className="px-4 py-1.5 rounded-lg text-xs font-medium border transition-all"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = 'var(--color-text-primary)'
+                    e.currentTarget.style.backgroundColor = 'rgba(55, 65, 81, 0.5)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--color-text-secondary)'
+                    e.currentTarget.style.backgroundColor = 'transparent'
+                  }}
                 >
                   HỦY
                 </button>
                 <button
                   onClick={handleApply}
-                  className="px-4 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20 border border-indigo-500/30"
+                  style={{
+                    backgroundColor: 'var(--color-primary)',
+                    color: 'var(--color-text-primary)',
+                    borderColor: 'rgba(79, 70, 229, 0.3)',
+                    boxShadow: '0 10px 15px -3px rgba(79, 70, 229, 0.2)',
+                  }}
+                  className="px-4 py-1.5 rounded-lg text-xs font-bold border transition-all"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--color-primary-light)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--color-primary)'
+                  }}
                 >
                   ÁP DỤNG
                 </button>

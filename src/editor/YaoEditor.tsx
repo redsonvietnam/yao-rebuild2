@@ -67,6 +67,21 @@ export default function YaoEditor() {
         return ime.handleKeyDown(view, event)
       },
     },
+    onBeforeUpdate: ({ editor: ed }) => {
+      // Ensure every page has at least one paragraph
+      const { state } = ed
+      let needsFix = false
+      
+      state.doc.descendants((node) => {
+        if (node.type.name === 'page' && node.content.size === 0) {
+          needsFix = true
+        }
+      })
+
+      if (needsFix) {
+        console.log('[YaoEditor] Detected empty page in beforeUpdate, will fix in appendTransaction')
+      }
+    },
   })
 
   const ime = useIME(editor)
@@ -126,7 +141,7 @@ export default function YaoEditor() {
   }
 
   return (
-    <div className="flex flex-col w-full h-full bg-gray-950 overflow-hidden">
+    <div className="flex flex-col w-full h-full editor-container overflow-hidden">
       {/* Pinned Formatting Toolbar */}
       <EditorToolbar editor={editor} />
 
@@ -135,8 +150,12 @@ export default function YaoEditor() {
         {/* Ruler: absolute-positioned to avoid flex layout phantom overlay bug */}
         {showGrid && (
           <div
-            className="absolute top-0 left-0 right-0 bg-gray-900/80 border-b border-gray-800 flex justify-center overflow-x-auto z-[95]"
-            style={{ height: '45px' }}
+            className="ruler-wrapper"
+            style={{ 
+              height: '45px',
+              backgroundColor: 'var(--color-bg-toolbar)',
+              borderColor: 'var(--color-border)',
+            }}
           >
             <Ruler />
           </div>
